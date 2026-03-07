@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trips</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            font-family: Arial;
+        }
+
+        .carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 300px;
+            margin: 20px;
+        }
+
+        .slide img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        }
+
+        .buttons {
+            position: absolute;
+            width: 100%;
+            top: 45%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background: rgba(0, 0, 0, .5);
+            border: none;
+            color: white;
+            font-size: 30px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: rgba(0, 0, 0, .8);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="carousel">
+
+        <div class="track" id="track">
+
+            <div class="slide"><img
+                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Trip\AndreaBlowsNose.jpg"></div>
+            <div class="slide"><img
+                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Trip\AustriaBandConcert.jpg"></div>
+            <div class="slide"><img
+                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Trip\CransMontanaMe.jpg"></div>
+            <div class="slide"><img
+                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Trip\LondonTowerBridgeMeandIsa.jpg">
+            </div>
+            <div class="slide"><img
+                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Trip\MeandIsaSwitzLake.jpg"></div>
+            <div class="slide"><img
+                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Trip\MeandIsaThames.jpg"></div>
+            <div class="slide"><img src="images/photo5.jpg"></div>
+            <div class="slide"><img src="images/photo5.jpg"></div>
+            <div class="slide"><img src="images/photo5.jpg"></div>
+
+        </div>
+
+        <div class="buttons">
+            <button onclick="move(-1)">❮</button>
+            <button onclick="move(1)">❯</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        let position = 0;
+        const track = document.getElementById("track");
+        const slides = document.querySelectorAll(".slide");
+        const slideWidth = 340;
+
+        function move(direction) {
+            position += direction * slideWidth;
+            track.style.transform = `translateX(${position}px)`;
+        }
+
+        setInterval(() => {
+            move(-1);
+        }, 3000);
+
+    </script>
+
+</body>
+
+</html>
