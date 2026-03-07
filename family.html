@@ -63,26 +63,15 @@
         <div class="track" id="track">
 
             <div class="slide"><img src="/Family/FamMaryWedding.jpg"></div>
-            <div class="slide"><img
-                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\FamSwingPic.jpg"></div>
-            <div class="slide"><img
-                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\GirlsTonguesOut.jpg"></div>
-            <div class="slide"><img src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\MeandDad.jpg">
-            </div>
-            <div class="slide"><img
-                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\MeandIrelynBW.jpg"></div>
-            <div class="slide"><img
-                    src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\MeandIsaBW.jpg"></div>
-            <div class="slide"><img src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\MeandMom.jpg">
-            </div>
-            <div class="slide"><img src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\MeandSamD.jpg">
-            </div>
-            <div class="slide"><img src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\MomandDad.jpg">
-            </div>
-            <div class="slide"><img src="C:\Users\Owner\OneDrive\Desktop\tech-moms\Real Tech Moms\Family\SistersAZ.jpg">
-            </div>
-            <div class="slide"><img src="Family\MeandMom.jpg"></div>
-            <div class="slide"><img src="images/photo5.jpg"></div>
+            <div class="slide"><img src="/Family/FamSwingPic.jpg"></div>
+            <div class="slide"><img src="/Family/GirlsTonguesOut.jpg"></div>
+            <div class="slide"><img src="/Family/MeandDad.jpg"></div>
+            <div class="slide"><img src="/Family/MeandIrelynBW.jpg"></div>
+            <div class="slide"><img src="/Family/MeandIsaBW.jpg"></div>
+            <div class="slide"><img src="/Family/MeandMom.jpg"></div>
+            <div class="slide"><img src="/Family/MeandSamD.jpg"></div>
+            <div class="slide"><img src="/Family/MomandDad.jpg"></div>
+            <div class="slide"><img src="/Family/SistersAZ.jpg"></div>
             <div class="slide"><img src="images/photo5.jpg"></div>
 
         </div>
@@ -100,15 +89,24 @@
         const track = document.getElementById("track");
         const slides = document.querySelectorAll(".slide");
         const slideWidth = 340;
+        const maxPosition = -(slides.length - 1) * slideWidth; // how far left we can go
 
         function move(direction) {
-            position += direction * slideWidth;
+            position += direction * slideWidth; // move left or right
+
+            if (position > 0) {
+                position = maxPosition; // if we go too far right, jump to the end
+            }
+            if (position < maxPosition) {
+                position = 0; // if we go too far left, jump back to the start
+            }
+
             track.style.transform = `translateX(${position}px)`;
         }
 
         setInterval(() => {
             move(-1);
-        }, 3000);
+        }, 1000);
 
     </script>
 
